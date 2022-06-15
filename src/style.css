@@ -1,0 +1,387 @@
+body, p, h1, ul, li
+{
+    margin: 0px;
+    padding: 0px;
+}
+body
+{
+    font-family: "volkorn", Georgia,  serif;
+}
+li
+{
+    list-style: none;
+}
+a
+{
+    text-decoration: none;
+}
+
+img
+{
+    display: block;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.estrutura
+{
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) 3fr 300px;
+    grid-template-areas: 
+    "header    header    header"
+    "sidenav   content   anuncios"
+    "slide     slide       slide"
+    "footer    footer    footer"
+    ;
+}
+
+
+/* RESPONSIVIDADE  ESTRUTURA GERAL*/
+@media(max-width:1200px)
+{
+    .estrutura
+    {
+        grid-template-areas: 
+        "header header header"
+        "sidenav content content"
+        "sidenav slide slide"
+        "slide anuncios anuncios"
+        "footer footer footer"
+        ;
+    }
+}
+/* RESPONSIVIDADE  ESTRUTURA GERAL*/
+@media(max-width:760px)
+{
+    .estrutura
+    {
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "header" 
+        "sidenav"
+        "content"
+        "slide"
+        "anuncios"
+         "footer"
+        ;
+    }
+}
+
+
+
+/* ESTILO HEADER */
+.header
+{
+    grid-area: header;
+    background: linear-gradient(135deg,  #228B22,  #00CED1, #8B4513);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+
+/* LOGO DO CABEÇALHO */
+.logo
+{
+    max-width: 10%;
+}
+
+/* BARRA DE NAVEGAÇÂO DO CABEÇALHO */
+.header nav ul
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.header nav a
+{
+    display: block;
+    padding: 10px;
+    color: white;
+    font-size: 1.125em;
+    background: rgba(0, 0, 0, .1);
+    border-radius: 8px;
+    transition: 0.1s;
+
+}
+.header nav a:hover
+{
+    background: rgba(0, 0, 0, .5);
+}
+.header li + li /*DEPOIS DA (LI) COLOQUE A MARGEM*/
+{
+    margin-left: 30px;
+}
+
+/* RESPONSIVIDADE  HEADER*/
+@media(max-width:760px)
+{
+    .header
+    {
+        grid-template-columns: auto;
+    }
+    .logo
+    {
+        margin-bottom: 20px;
+    }
+    .header nav a
+    {
+        font-size: 1em;
+    }
+    .header li + li
+    {
+        margin-left: 10px;
+    }
+}
+
+
+
+
+/* ESTILO SIDENAV */
+.sidenav
+{
+    grid-area: sidenav;
+    background: #fafbfc;
+    padding: 30px;
+}
+.sidenav li a
+{
+    display: block;
+    min-width: 60px;
+    max-width: 100px;
+    margin: 0px auto 30px auto;
+    background: #00CED1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px 0 rgba(44, 44, 44, 0.25);
+    transition: .1s ease-out;
+
+}
+.sidenav li a:hover
+{
+    background: linear-gradient(135deg,  #228B22,  #00CED1, #8B4513);
+    ;
+}
+
+/* KEYFRAME PARA A SETINHA */
+@keyframes seta
+{
+    from
+    {
+        right: 30px;
+    }
+    to
+    {
+        right: 20px;
+    }
+}
+
+/* RESPONSIVIDADE DO SIDENAV */
+@media(max-width:760px)
+{
+    .sidenav
+    {
+        position: relative;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    .sidenav::after
+    {
+        content: '🠚';
+        position: absolute;
+        right: 30px;
+        top: 5px;
+        color: rgba(0, 0, 0, .3);
+        animation: seta .5s ease-in 0s infinite alternate;
+    }
+    .sidenav ul
+    {
+        display: flex;
+    }
+    .sidenav li
+    {
+        flex: 1 0 60px;
+    }
+    .sidenav
+    {
+        padding: 0 30px;
+    }
+    .sidenav li a
+    {
+        margin: 30px 30px 30px 0px;
+    }
+}
+
+
+
+
+/* ESTILIZAÇÂO CONTEUDO */
+.content
+{
+    grid-area: content;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+
+}
+
+/* RESPONSIVIDADE CONTENT */
+@media(max-width:600px)
+{
+    .content
+    {
+        grid-template-columns: auto;
+    }
+}
+
+
+p
+{
+    font-size: 1.2em;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    color: rgba(0, 0, 0, .7);
+
+   
+   
+    margin: 0 auto;
+    max-width: 500px;
+   
+ 
+ 
+}
+
+.titulo
+{
+    color: #228B22;
+}
+.titulo h1
+{
+    font-size: 3.75em;
+    line-height: 1.5em;
+    font-weight: 700;
+}
+.titulo span
+{
+    font-size: 0.875em;
+    font-style: italic;
+}
+
+
+
+
+
+/* ESTILIZAÇÂO DOS ANUNCIOS */
+.anuncios
+{
+    grid-area: anuncios;
+    background: #fafbfc;
+    display: grid;
+    align-content: start;
+    padding: 30px;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* box-shadow: 5px 5px 15px 0 rgba(44, 44, 44, 2.90); */
+    
+}
+
+.anucio-item
+{
+    box-shadow: 5px 5px 15px 0 rgba(44, 44, 44, 2.90);
+    border-radius: 8px;
+  
+}
+.anucio-item img
+{
+    border-top: 2px solid #00CED1;
+    border-right: 2px  solid   #00CED1;
+    /* border-bottom: 4px solid    #8B4513; */
+    /* border-left: 4px solid #8B4513; */
+}
+
+
+
+
+/* ESTILIZAÇÂO DO SLIDE DE IMAGENS */
+.slide
+{
+
+    grid-area: slide;
+    grid-gap: 20px;
+    max-width: 800px;
+    padding: 10px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+}
+.sidebar > div
+{
+    margin-bottom: 10px;
+}
+.slide  > div:nth-child(1)
+{
+    
+}
+.slide p
+{
+    font-size: 1.5em;
+    font-style: italic;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 500px;
+    padding-top: 80px;
+    
+}
+
+
+/* responsividade do slide de imagens*/
+@media (max-width:600px)
+{
+    /*falar com o slide*/
+    .slide
+    {
+        grid-template-columns: 1fr;
+    }
+
+    
+    .sidebar
+    {
+        display: flex;
+        overflow: scroll;      
+    }
+
+    
+    .sidebar > div
+    {
+        flex: 1 0 200px;
+        margin: 0 10px;
+    }
+}
+
+
+
+
+
+/* ESTILIZAÇÂO RODAPÉ */
+.footer
+{
+    grid-area: footer;
+    background: linear-gradient(135deg,  #228B22,  #00CED1, #8B4513);
+
+
+}
+.footer  p 
+{
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+.footer nav
+{
+    text-align: center;
+    margin: 10px 10px;
+}
+
